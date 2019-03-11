@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    {{ __('home.welcome_message') }}
                 </div>
             </div>
         </div>
