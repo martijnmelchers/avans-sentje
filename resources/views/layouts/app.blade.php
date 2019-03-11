@@ -66,6 +66,25 @@
                                     </form>
                                 </div>
                             </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ App::getLocale() }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @foreach(config('app.supported_locale') as $locale)
+
+                                    @if ($locale != App::getLocale())
+                                        <a class="dropdown-item" href="{{ route('logout') }}">
+                                                {{ $locale }}
+                                        </a>
+                                    @endif
+                
+                                    @endforeach
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
