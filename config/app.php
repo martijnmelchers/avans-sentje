@@ -84,8 +84,14 @@ return [
 
 
     'supported_locale' => [
-        'en',
-        'nl'
+        [
+            'name' => 'English',
+            'value' => 'en'
+        ],
+        [
+            'name' => 'Dutch',
+            'value' => 'nl',
+        ]
     ],
 
 

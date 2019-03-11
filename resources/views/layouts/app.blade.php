@@ -67,24 +67,23 @@
                                 </div>
                             </li>
 
-
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ App::getLocale() }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @foreach(config('app.supported_locale') as $locale)
-
-                                    @if ($locale != App::getLocale())
-                                        <a class="dropdown-item" href="{{ route('logout') }}">
-                                                {{ $locale }}
-                                        </a>
+                            <form id="localeChange" method="post" action="{{ action('LocalizationController@postChangeLocale') }}">
+                                @csrf
+                                <select name="locale"  onchange="document.getElementById('localeChange').submit();">
+                                @foreach(config('app.supported_locale') as $locale)
+                                    @if ($locale['value'] == App::getLocale())
+                                        <option  selected class="dropdown-item" value='{{$locale["value"]}}' onclick="event.preventDefault();">
+                                                {{ $locale['name'] }}
+                                        </option>
+                                    @else
+                                        <option class="dropdown-item" value='{{$locale["value"]}}' onclick="event.preventDefault();">
+                                                    {{ $locale['name'] }}
+                                        </option>
                                     @endif
-                
-                                    @endforeach
-                                </div>
-                            </li>
+                                @endforeach                               
+                                
+                                </select>
+                            </form>
                         @endguest
                     </ul>
                 </div>
