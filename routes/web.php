@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('localization');
 Route::post('/localization', 'LocalizationController@postChangeLocale')->middleware('localization');
-Route::resource('rekeningen', 'RekeningController');
+Route::resource('rekeningen', 'RekeningController')->middleware('localization', 'auth');

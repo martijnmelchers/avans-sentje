@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form method='post' action="{{ route('rekening.store') }}">
+                    <form method='post' action="{{ route('rekeningen    .store') }}">
                         <div class="form-group">
                             @csrf
 

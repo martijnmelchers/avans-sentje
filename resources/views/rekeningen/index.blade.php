@@ -14,43 +14,10 @@
                         </div>
                     @endif
                     
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <td>Naam</td>
-                                <td>IBAN</td>
-                                <td>Saldo</td>
-
-                                <td>Beheer</td>
-                            </tr>
-                        </thead>
-
-
-                        <tbody>
-                            @foreach($rekeningen as $rekening)
-                            <?php
-                                // dd($rekening);
-                            ?>
-                                <tr>
-                                    <td>{{ $rekening->name }}</td>
-                                    <td>{{ $rekening->nummer }}</td>
-                                    <td>{{ $rekening->saldo }}</td>
-                                    <td>
-                                        <select name="" id="">
-                                            <option value="">
-                                                Bewerken
-                                            </option>
-
-                                            <option value="">
-                                                Verwijderen
-                                            </option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-         
+                    
+                    @component('rekeningen', ["rekeningen" => $rekeningen])
+                    @endcomponent
+                    <a href="{{ route('rekeningen.create') }}" class="btn btn-primary">Nieuwe rekening</a>
                 </div>
             </div>
         </div>

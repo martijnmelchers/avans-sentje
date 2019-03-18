@@ -39,6 +39,8 @@ class RekeningController extends Controller
         $rekening->user_id = Auth::id();
 
         $rekening->save();
+
+        return redirect('rekeningen');
     }
 
     public function update(){

@@ -69,7 +69,7 @@
 
                             <form id="localeChange" method="post" action="{{ action('LocalizationController@postChangeLocale') }}">
                                 @csrf
-                                <select name="locale"  onchange="document.getElementById('localeChange').submit();">
+                                <select class="form-control" name="locale"  onchange="document.getElementById('localeChange').submit();">
                                 @foreach(config('app.supported_locale') as $locale)
                                     @if ($locale['value'] == App::getLocale())
                                         <option  selected class="dropdown-item" value='{{$locale["value"]}}' onclick="event.preventDefault();">
