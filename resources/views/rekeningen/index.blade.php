@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Uw rekeningen</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('home.welcome_message') }}
+                    
+                    
+                    @component('rekeningen', ["rekeningen" => $rekeningen])
+                    @endcomponent
+                    <a href="{{ route('rekeningen.create') }}" class="btn btn-primary">Nieuwe rekening</a>
                 </div>
             </div>
         </div>
