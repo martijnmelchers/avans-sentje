@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rekening extends Model
 {
 
-
+    public $incrementing = false;
     protected $table = "rekeningen";
      
     protected $primaryKey = 'nummer';
