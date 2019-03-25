@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Rekening;
+use App\RekeningTransactie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RekeningController extends Controller
 {
     const LAND_CODE = "NL83SENTJE";
-
 
     public function index()
     {
@@ -20,6 +20,22 @@ class RekeningController extends Controller
     public function create()
     {
         return view('rekeningen.create');
+    }
+
+    public function details($nummer){
+        $rekening = Rekening::find($nummer);
+        
+        if(!$rekening)
+        abort(404);
+
+        if(!Auth::User()->rekeningen->contains($rekening))
+        abort(403);
+
+
+      
+        
+        $transacties = $rekening->to->merge($rekening->from);
+        return view('rekeningen.details', compact('rekening', 'transacties'));
     }
 
     public function edit()

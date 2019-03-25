@@ -9,7 +9,7 @@ class RekeningTransactie extends Model
     protected $table = "rekening_transactie";
 
     protected $fillable = [
-        'ammount', 'from', 'to',
+        'amount', 'from', 'to',
     ];
 
     public function from(){
