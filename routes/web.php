@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('localization');
-Route::post('/localization', 'LocalizationController@postChangeLocale')->middleware('localization');
-Route::resource('rekeningen', 'RekeningController')->middleware('localization', 'auth');
-Route::get('/sentje/maken', 'SentjeController@titel')->middleware('localization', 'auth');
-Route::get('/sentje/maken/bedrag', 'SentjeController@bedrag')->middleware('localization', 'auth');
-Route::get('/sentje/maken/delen', 'SentjeController@delen')->middleware('localization', 'auth');
+Route::get('/home', 'HomeController@index')->name('home')->middleware(['localization']);
+Route::post('/localization', 'LocalizationController@postChangeLocale')->middleware(['localization']);
+Route::resource('rekeningen', 'RekeningController')->middleware(['localization', 'auth']);
+Route::get('/sentje/maken', 'SentjeController@titel')->middleware(['localization', 'auth']);
+Route::get('/sentje/maken/bedrag', 'SentjeController@bedrag')->middleware(['localization', 'auth']);
+Route::get('/sentje/maken/delen', 'SentjeController@delen')->middleware(['localization', 'auth']);
