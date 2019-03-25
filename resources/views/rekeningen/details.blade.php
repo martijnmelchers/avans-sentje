@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Mijn rekeningen > {{$rekening->name}}
+                    {{__('accounts.my_accounts')}} > {{$rekening->name}}
                 </div>
 
                 <div class="card-body">
@@ -18,20 +18,19 @@
                     
 
                     <div>
-                    <h2>Saldo: </h2>
+                    <h2>{{__('accounts.balance')}}: </h2>
                         <h3>{{$rekening->saldo}}</h2>
                     </div>
 
                     <hr>
-                    <h2>Transacties: </h2>
+                    <h2>{{__('accounts.transactions.title')}}: </h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <td>Bedrag</td>
-                                <td>Soort</td>
-                                <td>van</td>
-                                <td>naar</td>
-
+                                <td>{{__('accounts.transactions.amount')}}</td>
+                                <td>{{__('accounts.transactions.type')}}</td>
+                                <td>{{__('accounts.transactions.from')}}</td>
+                                <td>{{__('accounts.transactions.to')}}</td>
                             </tr>
                         </thead>
 

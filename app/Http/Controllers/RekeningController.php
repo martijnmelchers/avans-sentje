@@ -24,16 +24,13 @@ class RekeningController extends Controller
 
     public function details($nummer){
         $rekening = Rekening::find($nummer);
-        
+
         if(!$rekening)
         abort(404);
 
         if(!Auth::User()->rekeningen->contains($rekening))
         abort(403);
 
-
-      
-        
         $transacties = $rekening->to->merge($rekening->from);
         return view('rekeningen.details', compact('rekening', 'transacties'));
     }
@@ -64,6 +61,17 @@ class RekeningController extends Controller
         return redirect('rekeningen');
     }
 
+
+    public function createTransaction($from, $to, $amount){
+        $transactie = new RekeningTransactie;    
+        $transactie->from = $from;
+        $transactie->to = $to;
+        $transactie->amount= $amount;
+        return $transactie->save();
+    }
+
+
+    // Generates a 'sentje' IBAN with a set of random characters.
     private function generateIBAN()
     {
         // Available alpha caracters
@@ -76,7 +84,6 @@ class RekeningController extends Controller
     }
 
     // Generates an IBAN number with our bank signature and a random set of numbers.
-
     public function update()
     {
 
