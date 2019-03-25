@@ -29,19 +29,32 @@
                             <tr>
                                 <td>{{__('accounts.transactions.amount')}}</td>
                                 <td>{{__('accounts.transactions.type')}}</td>
-                                <td>{{__('accounts.transactions.from')}}</td>
-                                <td>{{__('accounts.transactions.to')}}</td>
+                                <td>Nummer</td>
                             </tr>
                         </thead>
 
 
                         <tbody>
                             @foreach($transacties as $transactie)
-                                <tr>
-                                    <td>{{ $transactie->amount }}</td>
-                                    <td>+</td>
-                                    <td>{{ $transactie->from }}</td>
-                                    <td>{{ $transactie->to }}</td>
+
+                            @if ($transactie->from == $rekening->nummer)
+                            <tr style="background-color: red">
+                            @else
+                            <tr style="background-color: green">
+                            @endif
+                                    <td>&euro;{{ $transactie->amount }}</td>
+                                    <td>
+                                        @if ($transactie->from == $rekening->nummer)
+                                            -
+                                        @else
+                                            +
+                                        @endif
+                                    </td>
+                                        @if ($transactie->from == $rekening->nummer)
+                                        <td>{{ $transactie->to }}</td>
+                                        @else
+                                        <td>{{ $transactie->from }}</td>
+                                        @endif
                                 </tr>
                             @endforeach
                         </tbody>
