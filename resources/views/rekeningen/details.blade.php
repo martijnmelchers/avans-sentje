@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{__('accounts.my_accounts')}} > {{$rekening->name}}
+                    <a href="{{route('rekeningen.index')}}">{{__('accounts.my_accounts')}}</a> > {{$rekening->name}}
                 </div>
 
                 <div class="card-body">
