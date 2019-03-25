@@ -19,7 +19,7 @@
 
                     <div>
                     <h2>{{__('accounts.balance')}}: </h2>
-                        <h3>{{$rekening->saldo}}</h2>
+                        <h3>&euro; {{$rekening->saldo}}</h2>
                     </div>
 
                     <hr>
@@ -42,7 +42,7 @@
                             @else
                             <tr style="background-color: green">
                             @endif
-                                    <td>&euro;{{ $transactie->amount }}</td>
+                                    <td>&euro; {{ $transactie->amount }}</td>
                                     <td>
                                         @if ($transactie->from == $rekening->nummer)
                                             -
