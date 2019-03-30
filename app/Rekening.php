@@ -27,10 +27,10 @@ class Rekening extends Model
     }
 
     public function from(){
-        return $this->hasMany('App\RekeningTransactie','from', 'nummer');
+        return $this->hasMany('App\RekeningTransactie','from', 'id');
     }
 
     public function to(){
-        return $this->hasMany('App\RekeningTransactie','to','nummer');
+        return $this->hasMany('App\RekeningTransactie','to','id');
     }
 }
