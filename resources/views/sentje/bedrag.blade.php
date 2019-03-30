@@ -20,7 +20,7 @@
                             <option hidden selected value="">Selecteer een rekening</option>
                             @foreach($rekeningen as $rek)
                                 <optgroup label="{{$rek->name}}">
-                                    <option value="{{$rek->nummer}}">{{$rek->nummer}}</option>
+                                    <option value="{{$rek->id}}">{{$rek->nummer}}</option>
                                 </optgroup>
                             @endforeach
                         </select>

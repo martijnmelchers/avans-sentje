@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Sentje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\DB;
 
 class SentjeController extends Controller
 {
@@ -27,9 +27,12 @@ class SentjeController extends Controller
         $rekeningen = Auth::User()->rekeningen;
         $rekening = "";
 
-        if ($request != null) {
+        if ($request != null)
             $rekening = $request->input('rekening');
-        }
+
+        if (sizeof($rekeningen) == 0)
+            return redirect('rekeningen');
+
         return view('sentje.bedrag', ["rekeningen" => $rekeningen, "rekening" => $rekening]);
 
     }
@@ -40,26 +43,49 @@ class SentjeController extends Controller
         $custom = Cookie::get('custom');
         $rekening = Cookie::get('rekening');
 
-        if(($amount == null && $custom == null) || $rekening == null)
+        if (($amount == null && $custom == null) || $rekening == null)
             return redirect('sentje/maken');
+
+        $sentje = new Sentje;
 
         $amount = $amount == null ? 0 : $amount;
         $custom = $custom == null ? false : $custom;
 
-        DB::table('sentje')->insert([
-            ['id' => $this->generateRandomString(), 'fixed_amount' => $custom, 'amount' => $amount, 'nummer' => $rekening, 'title' => $request->input('title')]
-        ]);
+        $sentje->id = SentjeController::generateRandomString();
+        $sentje->amount = $amount;
+        $sentje->fixed_amount = !$custom;
+        $sentje->rekening_id = $rekening;
+        $sentje->title = $request->input('title');
+        $sentje->user_id = Auth::id();
+
+        $sentje->save();
+
+        Cookie::unqueue('amount');
+        Cookie::unqueue('custom');
+        Cookie::unqueue('rekening');
+
+        Cookie::queue('sentje_id', $sentje->id);
 
         return redirect('sentje/maken/delen');
     }
 
-    public function delen()
-    {
-        return view('sentje.titel');
-    }
-
-    function generateRandomString($length = 10)
+    private static function generateRandomString($length = 10)
     {
         return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
+    }
+
+    public function delen()
+    {
+        $id = Cookie::get('sentje_id');
+
+        if ($id == null)
+            return redirect('/sentje/maken');
+
+
+        $sentje = Sentje::find($id);
+        if ($sentje == null)
+            redirect('/sentje/maken');
+
+        return view('sentje.delen', ["sentje" => $sentje]);
     }
 }
