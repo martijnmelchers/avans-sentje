@@ -13,6 +13,11 @@ class UpdateTableLengths extends Migration
      */
     public function up()
     {
+        Schema::table('rekening_transactie', function (Blueprint $table) {
+            $table->dropForeign('rekening_transactie_from_foreign');
+            $table->dropForeign('rekening_transactie_to_foreign');
+        });
+
         Schema::table('sentje', function (Blueprint $table) {
             $table->dropForeign('sentje_nummer_foreign');
         });
