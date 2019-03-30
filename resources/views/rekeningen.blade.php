@@ -13,7 +13,7 @@
     <tbody>
         @foreach($rekeningen as $rekening)
             <tr>
-                <td>{{ $rekening->name }}</td>
+                <td><a href="/rekening/{{$rekening->nummer}}">{{ $rekening->name }}</a></td>
                 <td>{{ $rekening->nummer }}</td>
                 <td>{{ $rekening->saldo }}</td>
                 <td>
