@@ -44,4 +44,7 @@ class User extends Authenticatable
     public function sentje() {
         return $this->hasMany('App\Sentje');
     }
+    public function plannedSentjes(){
+        return $this->hasMany('App\PlannedSentje');
+    }
 }

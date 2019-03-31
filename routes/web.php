@@ -33,3 +33,5 @@ Route::post('/sentje/betalen/{id}', 'PaymentController@toMollie')->middleware(['
 Route::post('/sentje/callback', 'PaymentController@callback')->middleware(['localization']);
 Route::get('/sentje/bevestiging/{id}/{payId}', 'PaymentController@confirm')->middleware(['localization']);
 Route::get('/rekening/{nummer}','RekeningController@details')->middleware(['localization', 'auth']);
+Route::post('/gepland/opslaan', 'PlanController@store')->middleware(['localization', 'auth']);
+Route::get('/gepland', 'PlanController@getPlanned')->middleware(['localization', 'auth']);

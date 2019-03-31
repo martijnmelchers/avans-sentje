@@ -1,11 +1,11 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <td>Naam</td>
-            <td>IBAN</td>
-            <td>Saldo</td>
+            <td>{{__('accounts.name_label')}}</td>
+            <td>{{__('accounts.iban_label')}}</td>
+            <td>{{__('accounts.saldo_label')}}</td>
 
-            <td>Beheer</td>
+            <td>{{__('accounts.management_label')}}</td>
         </tr>
     </thead>
 
