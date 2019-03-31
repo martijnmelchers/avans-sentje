@@ -44,7 +44,7 @@
 <script>
     $(document).ready(function(){
     
-        var defaultDates = [];
+        var defaultDates = ['today'];
         var selectedDates = [];
         var messages = [];
 
@@ -59,6 +59,9 @@
             success:function(data){
                 var dates = JSON.parse(data);
 
+                if(dates.length > 0){
+                    defaultDates = [];                    
+                }
                 console.log(dates);
                 for(var i = 0; i < dates.length; i ++){
 
@@ -73,7 +76,7 @@
                             }
                         }
                     }
-                 
+                    
                     defaultDates.push(dates[i].planned);
                     messages[dates[i].planned] = dates[i];
                 }
