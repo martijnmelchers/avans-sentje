@@ -26,3 +26,5 @@ Route::post('/sentje/maken/titel', 'SentjeController@titel')->middleware(['local
 Route::post('/sentje/maken/create', 'SentjeController@create')->middleware(['localization', 'auth']);
 Route::get('/sentje/maken/delen', 'SentjeController@delen')->middleware(['localization', 'auth']);
 Route::get('/rekening/{nummer}','RekeningController@details')->middleware(['localization', 'auth']);
+Route::post('/gepland/opslaan', 'PlanController@store')->middleware(['localization', 'auth']);
+Route::get('/gepland', 'PlanController@getPlanned')->middleware(['localization', 'auth']);
