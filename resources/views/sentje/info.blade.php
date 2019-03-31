@@ -39,29 +39,29 @@
                                         <label for="amount">{{__('sentje.enter_custom_amount')}}</label>
                                         <div class="input-group mb-1">
                                             <input type="number" class="form-control" id="amount" min="0.01" step="0.01" name="amount"
-                                                   placeholder="10,00">
+                                                   placeholder="10,00" required>
                                         </div>
                                         <div id="different_currency" class="text-left mb-3" hidden>
-                                            <b>Bedrag in EUR: <span id="amount_in_euro"></span></b>
+                                            <b>{{__('sentje.amount_in_eur')}} <span id="amount_in_euro"></span></b>
                                         </div>
                                     @endif
 
                                     <div class="text-left">
-                                        <label for="name">Van wie is het?</label>
+                                        <label for="name">{{__('sentje.from_who')}}</label>
                                     </div>
                                     <input id="name" type="text" name="name" class="form-control mb-3" required>
 
                                     <div class="text-left">
-                                        <label for="message">Voeg een bericht bij</label>
+                                        <label for="message">{{__('sentje.enter_message')}}</label>
                                     </div>
                                     <textarea class="form-control mb-3" id="message" name="message" required></textarea>
 
                                     <div class="text-left">
-                                        <label for="location">Locatie</label>
+                                        <label for="location">{{__('sentje.location')}}</label>
                                     </div>
                                     <input id="location" type="text" name="location" class="form-control mb-3">
 
-                                    <button class="btn btn-success btn-block" type="submit">Betalen</button>
+                                    <button class="btn btn-success btn-block" type="submit">{{__('sentje.pay')}}</button>
                                 </div>
                             </div>
                         </div>

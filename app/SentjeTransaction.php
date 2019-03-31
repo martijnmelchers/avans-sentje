@@ -11,14 +11,10 @@ class SentjeTransaction extends Model
 
     protected $primaryKey = 'id';
     protected $fillable = [
-        'currency', 'amount', 'converted_amount', 'name', 'message', 'location', 'paid'
+        'currency', 'amount', 'converted_amount', 'name', 'message', 'location', 'paid', 'cancelled'
     ];
 
     public function sentje(){
         return $this->belongsTo('App\Sentje');
-    }
-
-    public function transactions(){
-        return $this->hasMany('App\SentjeTransaction','sentje_id', 'id');
     }
 }

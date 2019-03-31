@@ -8,6 +8,8 @@ class RekeningTransactie extends Model
 {
     protected $table = "rekening_transactie";
 
+    public $incrementing = true;
+    protected $primaryKey = 'id';
     protected $fillable = [
         'amount', 'from', 'to',
     ];

@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Poespas Bank') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @if(Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="../rekeningen">{{ __('general.accounts') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="sentje/overzicht">{{ __('general.sentjes') }}</a>
+                            </li>
+                            @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -41,11 +48,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('general.login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('general.register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -66,25 +73,24 @@
                                     </form>
                                 </div>
                             </li>
-
-                            <form id="localeChange" method="post" action="{{ action('LocalizationController@postChangeLocale') }}">
-                                @csrf
-                                <select class="form-control" name="locale"  onchange="document.getElementById('localeChange').submit();">
+                        @endguest
+                        <form id="localeChange" method="post" action="{{ action('LocalizationController@postChangeLocale') }}">
+                            @csrf
+                            <select class="form-control" name="locale"  onchange="document.getElementById('localeChange').submit();">
                                 @foreach(config('app.supported_locale') as $locale)
                                     @if ($locale['value'] == App::getLocale())
                                         <option  selected class="dropdown-item" value='{{$locale["value"]}}' onclick="event.preventDefault();">
-                                                {{ $locale['name'] }}
+                                            {{ $locale['name'] }}
                                         </option>
                                     @else
                                         <option class="dropdown-item" value='{{$locale["value"]}}' onclick="event.preventDefault();">
-                                                    {{ $locale['name'] }}
+                                            {{ $locale['name'] }}
                                         </option>
                                     @endif
-                                @endforeach                               
-                                
-                                </select>
-                            </form>
-                        @endguest
+                                @endforeach
+
+                            </select>
+                        </form>
                     </ul>
                 </div>
             </div>

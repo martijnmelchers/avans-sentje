@@ -21,4 +21,9 @@ class Sentje extends Model
     public function rekening(){
         return $this->belongsTo('App\Rekening');
     }
+
+
+    public function transactions(){
+        return $this->hasMany('App\SentjeTransaction','sentje_id', 'id')->where('paid', '=', true);
+    }
 }

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 })->middleware('localization');
 
 Auth::routes();
@@ -28,5 +28,5 @@ Route::get('/sentje/maken/delen', 'SentjeController@delen')->middleware(['locali
 Route::get('/sentje/betalen/{id}', 'PaymentController@info')->middleware(['localization']);
 Route::post('/sentje/betalen/{id}', 'PaymentController@toMollie')->middleware(['localization']);
 Route::post('/sentje/callback', 'PaymentController@callback')->middleware(['localization']);
-Route::get('/sentje/bevestiging/{id}', 'PaymentController@callback')->middleware(['localization']);
+Route::get('/sentje/bevestiging/{id}', 'PaymentController@confirm')->middleware(['localization']);
 Route::get('/rekening/{nummer}','RekeningController@details')->middleware(['localization', 'auth']);

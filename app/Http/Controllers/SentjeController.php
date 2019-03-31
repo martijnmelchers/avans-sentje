@@ -26,15 +26,11 @@ class SentjeController extends Controller
     public function bedrag(Request $request = null)
     {
         $rekeningen = Auth::User()->rekeningen;
-        $rekening = "";
-
-        if ($request != null)
-            $rekening = $request->input('rekening');
 
         if (sizeof($rekeningen) == 0)
             return redirect('rekeningen');
 
-        return view('sentje.bedrag', ["rekeningen" => $rekeningen, "rekening" => $rekening]);
+        return view('sentje.bedrag', ["rekeningen" => $rekeningen, "rekening" => ""]);
 
     }
 

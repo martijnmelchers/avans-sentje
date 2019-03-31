@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'nl',
 
 
     'supported_locale' => [
@@ -89,7 +89,7 @@ return [
             'value' => 'en'
         ],
         [
-            'name' => 'Dutch',
+            'name' => 'Nederlands',
             'value' => 'nl',
         ]
     ],
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'nl',
 
     /*
     |--------------------------------------------------------------------------
@@ -195,6 +195,7 @@ return [
     | Class Aliases
     |--------------------------------------------------------------------------
     |
+    | This array of class aliases will be registered when this application
     | This array of class aliases will be registered when this application
     | is started. However, feel free to register as many as you wish as
     | the aliases are "lazy" loaded so they don't hinder performance.

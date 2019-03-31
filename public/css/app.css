@@ -10724,3 +10724,7 @@ a.text-dark:focus {
   background: #e7e9ed;
 }
 
+.btn-info {
+  color: #fff !important;
+}
+

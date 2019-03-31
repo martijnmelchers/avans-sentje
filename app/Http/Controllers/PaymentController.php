@@ -116,9 +116,11 @@ class PaymentController extends Controller
             $rekening->saldo += $transaction->converted_amount;
             $rekening->save();
 
-            //TODO: Transactie rekening zooi
-            /*$bankTransaction = new RekeningTransactie;
-            $bankTransaction->from = */
+            $bankTransaction = new RekeningTransactie;
+            $bankTransaction->amount = $transaction->converted_amount;
+            $bankTransaction->from = $transaction->name;
+            $bankTransaction->to = $rekening->id;
+            $bankTransaction->save();
 
 
         } catch (ApiException $e) {
@@ -130,11 +132,11 @@ class PaymentController extends Controller
     function info(string $sentjeId)
     {
         $sentje = Sentje::find($sentjeId);
-        $user = User::find($sentje->user_id);
 
         if ($sentje == null)
             return redirect('/');
 
+        $user = User::find($sentje->user_id);
         $rates = $this->getExchangeRates()['rates'];
         $advancedRates = [];
 
@@ -147,5 +149,17 @@ class PaymentController extends Controller
         }
 
         return view('sentje.info', ['sentje' => $sentje, 'user' => $user, 'rates' => $advancedRates]);
+    }
+
+    function confirm(string $sentjeId) {
+        $sentje = Sentje::find($sentjeId);
+
+        if ($sentje == null)
+            return redirect('/');
+
+        $user = User::find($sentje->user_id);
+
+
+        return view('sentje.confirmatie', ['sentje' => $sentje, 'user' => $user]);
     }
 }
