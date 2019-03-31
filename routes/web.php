@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware(['localiza
 Route::post('/localization', 'LocalizationController@postChangeLocale')->middleware(['localization']);
 Route::resource('rekeningen', 'RekeningController')->middleware(['localization', 'auth']);
 Route::get('/sentje/maken', 'SentjeController@bedrag')->middleware(['localization', 'auth']);
+Route::get('/sentje/overzicht', 'SentjeController@index')->middleware(['localization', 'auth']);
 Route::post('/sentje/maken/titel', 'SentjeController@titel')->middleware(['localization', 'auth']);
 Route::post('/sentje/maken/create', 'SentjeController@create')->middleware(['localization', 'auth']);
 Route::get('/sentje/maken/delen', 'SentjeController@delen')->middleware(['localization', 'auth']);

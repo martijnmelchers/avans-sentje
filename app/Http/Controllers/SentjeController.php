@@ -11,7 +11,8 @@ class SentjeController extends Controller
 {
     public function index()
     {
-        return route('rekeningen.index');
+        $sentjes = Sentje::all();
+        return view('sentje.index', compact('sentjes'));
     }
 
     public function titel(Request $request)
