@@ -9,15 +9,27 @@ return [
     "title" => "Titel",
     "enter_title" => "Voer een titel in",
     "enter_title_placeholder" => "Typ hier je titel",
-    "share" => "Delen",
-    "share_title" => "Delen maar!",
+
     "minimum_amount_error" => "Vul een bedrag hoger dan €0 in",
     "custom_amount" => "Laat de ander het bedrag betalen",
     "which_account" => "Naar welke rekening?",
-    "share_text" => "Zou je mij *€:amount* kunnen betalen voor *:title*? via http://homestead.test/sentje/pay/:id",
-    "share_text_custom" => "Zou je mij kunnen betalen voor *:title*? via http://homestead.test/sentje/pay/:id",
-    "" => "",
-    "" => "",
+
+    /* Sharing */
+    "share" => "Delen",
+    "share_title" => "Delen maar!",
+    "share_text" => "Zou je mij *€:amount* kunnen betalen voor *:title*? via :url/sentje/pay/:id",
+    "share_text_custom" => "Zou je mij kunnen betalen voor *:title*? via :url/sentje/pay/:id",
+    "copy_link" => "Kopieer de link",
+    "whatsapp_sharing" => "Delen via Whatsapp",
+
+    /* Payment */
+    "payment_description" => "Betaling aan :name voor Sentje \":title\"",
+    "pay_sentje" => "Sentje betalen",
+    "exchange_rate_1" => "Wisselkoers van EUR (€) naar",
+    "exchange_rate_2" => "is",
+    "you_pay" => "Jij betaald: ",
+    "select_currency" => "Selecteer een valuta",
+    "enter_custom_amount" => "Voer een bedrag in",
     "" => "",
     "" => "",
 ];

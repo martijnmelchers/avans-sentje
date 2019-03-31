@@ -2,5 +2,6 @@
 
 return [
     "send" => "Versturen",
-    "next" => "Volgende"
+    "next" => "Volgende",
+    "or" => "Of"
 ];

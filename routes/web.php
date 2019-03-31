@@ -24,4 +24,8 @@ Route::get('/sentje/maken', 'SentjeController@bedrag')->middleware(['localizatio
 Route::post('/sentje/maken/titel', 'SentjeController@titel')->middleware(['localization', 'auth']);
 Route::post('/sentje/maken/create', 'SentjeController@create')->middleware(['localization', 'auth']);
 Route::get('/sentje/maken/delen', 'SentjeController@delen')->middleware(['localization', 'auth']);
+Route::get('/sentje/betalen/{id}', 'PaymentController@info')->middleware(['localization']);
+Route::post('/sentje/betalen/{id}', 'PaymentController@toMollie')->middleware(['localization']);
+Route::post('/sentje/callback', 'PaymentController@callback')->middleware(['localization']);
+Route::get('/sentje/bevestiging/{id}', 'PaymentController@callback')->middleware(['localization']);
 Route::get('/rekening/{nummer}','RekeningController@details')->middleware(['localization', 'auth']);
