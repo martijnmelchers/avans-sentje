@@ -15,17 +15,10 @@
             <tr>
                 <td><a href="/rekening/{{$rekening->id}}">{{ $rekening->name }}</a></td>
                 <td>{{ $rekening->nummer }}</td>
-                <td>{{ $rekening->saldo }}</td>
-                <td>
-                    <select class="form-control" name="" id="">
-                        <option value="">
-                            Bewerken
-                        </option>
+                <td>€{{ money_format("%i", $rekening->saldo) }}</td>
 
-                        <option value="">
-                            Verwijderen
-                        </option>
-                    </select>
+                <td>
+                    <a href="{{env('APP_URL')}}/rekening/verwijder/{{$rekening->id}}" class="btn btn-danger {{$rekening->saldo > 0 ? "disabled" : ""}}">{{__('general.delete')}}</a>
                 </td>
             </tr>
         @endforeach

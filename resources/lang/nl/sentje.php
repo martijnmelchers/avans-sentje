@@ -10,6 +10,7 @@ return [
     "title" => "Titel",
     "enter_title" => "Voer een titel in",
     "enter_title_placeholder" => "Typ hier je titel",
+    "select_account" => "Selecteer een rekening",
 
     "minimum_amount_error" => "Vul een bedrag hoger dan €0 in",
     "custom_amount" => "Laat de ander het bedrag betalen",
@@ -38,11 +39,34 @@ return [
     "pay" => "betalen",
     "amount_in_eur" => "Bedrag in EUR:",
 
-    /* Confirmation */
+    /* Confirmation & error */
     "thanks" => "Bedankt voor je betaling!",
     "thanks_you" => "bedankt je voor je betaling!",
-    "" => "",
+    "error" => "Er is een fout opgetreden!",
+    "error_text" => "Er is iets mis gegaan tijdens het verwerken van je betaling. Probeer het opnieuw door op onderstaande knop te drukken",
 
     /* Index */
     "self_determine" => "Zelf bepalen",
+    "table" => [
+        "card_title" => "Verzonden Sentjes",
+        "title" => "Titel",
+        "amount" => "Bedrag",
+        "account" => "Rekening",
+        "total_paid" => "Totaal ontvangen",
+        "options" => "Opties"
+    ],
+
+    /* Details */
+    "detail" => "Sentje details",
+    "detail_header" => "Details from Sentje",
+    "created_on" => "Created on: ",
+    "empty_location" => "No location",
+    "detail_table" => [
+        "currency" => "Currency",
+        "amount" => "Amount",
+        "in_euro" => "In EUR",
+        "sender" => "Sender",
+        "note" => "Note",
+        "location" => "Location"
+    ]
 ];

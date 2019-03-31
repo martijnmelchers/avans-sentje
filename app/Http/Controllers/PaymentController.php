@@ -60,7 +60,7 @@ class PaymentController extends Controller
                     'value' => number_format($amount, 2, '.', '')
                 ],
                 'description' => __('sentje.payment_description', ['name' => $user->name, 'title' => $sentje->title]),
-                'redirectUrl' => env('APP_URL') . '/sentje/bevestiging/' . $sentje->id,
+                'redirectUrl' => env('APP_URL') . '/sentje/bevestiging/' . $sentje->id . '/' . $transaction->id,
                 'webhookUrl' => env('APP_URL') . '/sentje/callback',
                 'metadata' => [
                     'sentjeId' => $sentje->id,
@@ -94,6 +94,9 @@ class PaymentController extends Controller
 
         try {
             $payment = Mollie::api()->payments()->get($request->input('id'));
+
+            if(!$payment->isPaid())
+                return abort(200);
 
             $sentje = Sentje::find($payment->metadata->sentjeId);
 
@@ -151,13 +154,17 @@ class PaymentController extends Controller
         return view('sentje.info', ['sentje' => $sentje, 'user' => $user, 'rates' => $advancedRates]);
     }
 
-    function confirm(string $sentjeId) {
+    function confirm(string $sentjeId, string $transactionId) {
         $sentje = Sentje::find($sentjeId);
 
         if ($sentje == null)
             return redirect('/');
 
         $user = User::find($sentje->user_id);
+        $transaction = SentjeTransaction::find($transactionId);
+
+        if($transaction == null || !$transaction->paid)
+            return view('sentje.error', ['sentje' => $sentje, 'user' => $user]);
 
 
         return view('sentje.confirmatie', ['sentje' => $sentje, 'user' => $user]);

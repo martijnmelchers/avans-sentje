@@ -6,12 +6,13 @@ use App\Sentje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Symfony\Component\Intl\Intl;
 
 class SentjeController extends Controller
 {
     public function index()
     {
-        $sentjes = Sentje::all();
+        $sentjes = Sentje::all()->where('user_id', '=', Auth::id());
         return view('sentje.index', compact('sentjes'));
     }
 
@@ -23,7 +24,7 @@ class SentjeController extends Controller
         return view('sentje.titel');
     }
 
-    public function bedrag(Request $request = null)
+    public function bedrag()
     {
         $rekeningen = Auth::User()->rekeningen;
 
@@ -32,6 +33,16 @@ class SentjeController extends Controller
 
         return view('sentje.bedrag', ["rekeningen" => $rekeningen, "rekening" => ""]);
 
+    }
+
+    public function delete(string $sentjeId) {
+        $sentje = Sentje::find($sentjeId);
+
+        if($sentje == null || $sentje->user_id != Auth::id() || sizeof($sentje->transactions) > 0)
+            return redirect('/');
+
+        $sentje->delete();
+        return redirect('/sentje/overzicht');
     }
 
     public function create(Request $request)
@@ -84,5 +95,18 @@ class SentjeController extends Controller
             redirect('/sentje/maken');
 
         return view('sentje.delen', ["sentje" => $sentje]);
+    }
+
+    public function details(string $sentjeId) {
+        $sentje = Sentje::find($sentjeId);
+
+        if($sentje == null || $sentje->user_id != Auth::id())
+            return redirect('/sentje/overzicht');
+
+        return view('sentje.detail', ['sentje' => $sentje]);
+    }
+
+    public static function getSymbol(string $currency) {
+        return Intl::getCurrencyBundle()->getCurrencySymbol($currency);
     }
 }

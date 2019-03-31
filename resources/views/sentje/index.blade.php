@@ -4,17 +4,17 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Verzonden sentjes</div>
+                    <div class="card-header">{{__('sentje.table.card_title')}}</div>
 
                     <div class="card-body">
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <td>Titel</td>
-                                <td>Bedrag</td>
-                                <td>Rekening</td>
-                                <td>Totaal betaald</td>
-                                <td>Opties</td>
+                                <td>{{__('sentje.table.title')}}</td>
+                                <td>{{__('sentje.table.amount')}}</td>
+                                <td>{{__('sentje.table.account')}}</td>
+                                <td>{{__('sentje.table.total_paid')}}</td>
+                                <td>{{__('sentje.table.options')}}</td>
                             </tr>
                             </thead>
 
@@ -38,14 +38,16 @@
                                         {{"€" . money_format('%i', $total)}}
                                     </td>
                                     <td>
-                                        <a href="#"
-                                           class="btn btn-danger {{sizeof($sentje->transactions) > 0 ? "disabled" : ""}}">Annuleren</a>
-                                        <a href="details/{{$sentje->id}}" class="btn btn-info {{$sentje->cancelled ? "disabled" : ""}}">Informatie</a>
+                                        <a href="{{env('APP_URL')}}/sentje/verwijder/{{$sentje->id}}"
+                                           class="btn btn-danger {{sizeof($sentje->transactions) > 0 ? "disabled" : ""}}">{{__('general.cancel')}}</a>
+                                        <a href="{{env('APP_URL')}}/sentje/details/{{$sentje->id}}" class="btn btn-primary">{{__('general.info')}}</a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+
+                        <a href="{{env('APP_URL')}}/sentje/maken" class="btn btn-primary">{{__('sentje.create')}}</a>
                     </div>
                 </div>
             </div>

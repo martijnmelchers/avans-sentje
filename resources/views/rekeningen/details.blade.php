@@ -22,7 +22,7 @@
                             <h3>&euro; {{money_format('%i', $rekening->saldo)}}</h3>
                         </div>
 
-                            <a href="/sentje/maken" class="btn btn-info">{{__('sentje.create')}}</a>
+                            <a href="/sentje/maken" class="btn btn-primary">{{__('sentje.create')}}</a>
 
                             <hr>
                         <h2>{{__('accounts.transactions.title')}}: </h2>

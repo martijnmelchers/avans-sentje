@@ -40,9 +40,21 @@ class RekeningController extends Controller
 
     }
 
-    public function remove()
+    public function remove($nummer)
     {
+        $rekening = Rekening::find($nummer);
 
+        if(!$rekening)
+            abort(404);
+
+        if(!Auth::User()->rekeningen->contains($rekening))
+            abort(403);
+
+        if($rekening->saldo > 0)
+            return redirect('/rekeningen');
+
+        $rekening->delete();
+        return redirect('/rekeningen');
     }
 
     // Create a rekening and add it to the current user.

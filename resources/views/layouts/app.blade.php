@@ -35,10 +35,10 @@
                     <ul class="navbar-nav mr-auto">
                         @if(Auth::check())
                             <li class="nav-item">
-                                <a class="nav-link" href="../rekeningen">{{ __('general.accounts') }}</a>
+                                <a class="nav-link" href="{{ env('APP_URL')}}/rekeningen">{{ __('general.accounts') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="sentje/overzicht">{{ __('general.sentjes') }}</a>
+                                <a class="nav-link" href="{{ env('APP_URL')}}/sentje/overzicht">{{ __('general.sentjes') }}</a>
                             </li>
                             @endif
                     </ul>
@@ -65,7 +65,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('general.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

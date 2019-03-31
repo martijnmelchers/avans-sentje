@@ -8,5 +8,10 @@ return [
     "sentjes" => "Sentjes",
     "close" => "Sluiten",
     "login" => "Inloggen",
-    "register" => "Registreren"
+    "logout" => "Uitloggen",
+    "register" => "Registreren",
+    "try_again" => "Probeer opnieuw",
+    "cancel" => "Annuleren",
+    "info" => "Informatie",
+    "delete" => "Verwijderen"
 ];

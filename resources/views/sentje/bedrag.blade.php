@@ -17,7 +17,7 @@
                     @if($rekening == "")
                         <h4>{{__('sentje.which_account')}}</h4>
                         <select id="rekening" class="form-control mb-3" required name="rekening">
-                            <option hidden selected value="">Selecteer een rekening</option>
+                            <option hidden selected value="">{{__('sentje.select_account')}}</option>
                             @foreach($rekeningen as $rek)
                                 <optgroup label="{{$rek->name}}">
                                     <option value="{{$rek->id}}">{{$rek->nummer}}</option>
