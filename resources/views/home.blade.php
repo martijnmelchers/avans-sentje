@@ -105,11 +105,17 @@
 
        function showMessagePrompt(selectedDates, dateStr){
             dateStr = dateStr.replace(/ /g, "");
+
+            if(dateStr == ""){
+                $("#dateList").html("");
+
+                return;
+            }
             readable = dateStr.split(',');
 
             $("#dateList").html("");
 
-            console.log(messages);
+            
             for(var i = 0; i < readable.length; i ++){
                 var date = selectedDates[i];
             
