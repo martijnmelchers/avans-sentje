@@ -15,5 +15,24 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    "login" => [
+        "email" => "Email",
+        "password" => "Password",
+        "remember_me" => "Remember me",
+        "login" => "Login",
+        "forgot_password" => "Forgot your password?"
+    ],
+    "forgot" => [
+        "title" => "Reset password",
+        "email" => "Email",
+        "send" => "Send reset link"
+    ],
+    "register" => [
+        "name" => "Name",
+        "email" => "Email",
+        "password" => "Password",
+        "repeat_password" => "Repeat password",
+        "register" => "Register"
+    ]
 
 ];
