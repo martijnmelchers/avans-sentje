@@ -68,7 +68,7 @@
                             plannedDate.setDate(plannedDate.getDate() + (j * 30));
                             defaultDates.push(plannedDate);
 
-                            if(j > 1){
+                            if(j > 0){
                                 recurringDates.push(plannedDate.toISOString().split('T')[0]);
                             }
                         }
@@ -136,7 +136,7 @@
                 else{
                     
 
-                    if(recurringDates.indexOf(readable[i])){
+                    if(recurringDates.indexOf(readable[i]) !== -1){
                         continue;
                     }
 
@@ -144,14 +144,14 @@
                     <div class='row'> 
                         <div class='col-md-4'>
                             <label>` +readable[i] + `</label>
-                            <input class='form-control' name='messages[` + readable[i] + `][message]' type='text'></input>
+                            <input required class='form-control' name='messages[` + readable[i] + `][message]' type='text'></input>
                         </div>
                         <div class='col-md-4'>
                             <label>Amount</label>
-                            <input name='messages[` + readable[i] + `][amount]' type="number" min="1" step="any">
+                            <input required name='messages[` + readable[i] + `][amount]' class ='form-control' type="number" min="1" step="any">
                         </div>
                         <div class='col-md-4'><label>Recurring</label>
-                            <input name='messages[` + readable[i] + `][recurring]' value="1"  class ='form-control'type='checkbox'></div>
+                            <input  name='messages[` + readable[i] + `][recurring]' value="1"  class ='form-control'type='checkbox'></div>
                         </div>`
                     );
                 }
